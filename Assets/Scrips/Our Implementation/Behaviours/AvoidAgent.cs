@@ -11,6 +11,7 @@ namespace Ours
             Steering steering = new Steering();
 
             Vector2 normalVector = GetNormalVectorOfAgentsInRange();
+
             steering.velocity = normalVector;
             return steering;
         }
@@ -26,8 +27,12 @@ namespace Ours
 
                 Vector2 normal = transform.position - agent.transform.position;
                 float distance = normal.magnitude;
-                if (radiusRange > distance)
-                    resultantNormal += normal;
+                if (radiusRange < distance)
+                    continue;
+
+                float inversePercentage = 1 - (distance - radiusRange);
+                normal *= inversePercentage * inversePercentage;
+                resultantNormal += normal;
             }
 
             return resultantNormal;

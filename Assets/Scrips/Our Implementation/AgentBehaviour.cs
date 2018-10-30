@@ -6,6 +6,7 @@ namespace Ours
     public abstract class AgentBehaviour : MonoBehaviour
     {
         public int priority = 1;
+        [Range(0,1)]public float weight = 1;
         protected Agent agent;
 
         private void Awake()
@@ -16,7 +17,9 @@ namespace Ours
 
         public void SendSteeringToAgent()
         {
-            agent.AddSteering(GetSteering(), priority);
+            Steering str = GetSteering();
+            str *= weight;
+            agent.AddSteering(str, priority);
         }
 
         public abstract Steering GetSteering();
