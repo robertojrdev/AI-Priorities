@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Agent
+  - Target
+  - Predator
+  - Prey
+  - Background
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -39,6 +43,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3193533913
+    locked: 0
+  - name: Walls
+    uniqueID: 3630842897
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
